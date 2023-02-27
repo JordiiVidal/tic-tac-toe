@@ -6,8 +6,7 @@ export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [currentMove, setCurrentMove] = useState(0);
     const currentSquares = history[currentMove];
-    const xIsNext = currentMove % 2 == 0;
-    console.log(history);
+    const xIsNext = currentMove % 2 === 0;
 
     function handlePlay(nextSquares){
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -16,17 +15,27 @@ export default function Game() {
     }
 
     function jumpTo(nextMove){
-        alert(nextMove);
         setCurrentMove(nextMove);        
+    }
+
+    function restartHistory(){
+        setHistory([Array(9).fill(null)]);
+        setCurrentMove(0);
     }
 
     return (
         <div className="game">
+            <div className="game-title">
+                <h1>Tic Tac Toe</h1>
+            </div>
             <div className="game-board">
                 <Board squares={currentSquares} xIsNext={xIsNext} onPlay={handlePlay}/>
             </div>
             <div className="game-info">
-                <History history={history} onHistoryClick={jumpTo} />
+                <History history={history} currentMove={currentMove} onHistoryClick={jumpTo} />
+                {
+                    history.length > 1 && <button onClick={restartHistory}>Restart</button>
+                }
             </div>
         </div>
     );
