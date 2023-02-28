@@ -1,6 +1,6 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import Game from './Game';
+import Game from './components/Game';
 import './styles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -6,9 +6,9 @@ export default function History({ history, currentMove, onHistoryClick }) {
     const getDetailContent = (move) => {
         if (move === currentMove) return (<span className='current'>You are at move #{currentMove}</span>);
         return (
-            <button onClick={() => onHistoryClick(move)}>
+            <span onClick={() => onHistoryClick(move)}>
                 Go to {move === 0 ? 'game start' : `move #${move}`}
-            </button>
+            </span>
         );
     }
 
@@ -18,9 +18,9 @@ export default function History({ history, currentMove, onHistoryClick }) {
                 <h4>History</h4>
                 <span><FontAwesomeIcon icon={faSort} /></span>
             </div>
-            <ol>
+            <ul>
                 {history.map((_, move) => <li key={move}>{getDetailContent(move)}</li>)}
-            </ol>
+            </ul>
         </>
     )
 }

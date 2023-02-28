@@ -14,8 +14,8 @@ body {
     background: #343a46;
     border: 1px solid #149eca;
     float: left;
-    font-size: 44px;
-    font-weight: bold;
+    font-size: 60px;
+    font-weight: 200;
     line-height: 100px;
     height: 100px;
     margin-right: -1px;
@@ -57,6 +57,30 @@ body {
     color: rgb(107 114 128);
 }
 
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+li span {
+    display: block;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background: #273541;
+    cursor: default;
+    text-align: center;
+}
+
 li span.current {
     color: #149eca;
+    box-shadow: inset 12px 12px 12px #23303b, inset -12px -12px 12px #2b3a48;
+}
+
+li span:not(.current):hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }

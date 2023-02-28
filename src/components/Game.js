@@ -8,17 +8,17 @@ export default function Game() {
     const currentSquares = history[currentMove];
     const xIsNext = currentMove % 2 === 0;
 
-    function handlePlay(nextSquares){
+    function handlePlay(nextSquares) {
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
         setHistory(nextHistory);
         setCurrentMove(nextHistory.length - 1);
     }
 
-    function jumpTo(nextMove){
-        setCurrentMove(nextMove);        
+    function jumpTo(nextMove) {
+        setCurrentMove(nextMove);
     }
 
-    function restartHistory(){
+    function restartHistory() {
         setHistory([Array(9).fill(null)]);
         setCurrentMove(0);
     }
@@ -29,10 +29,12 @@ export default function Game() {
                 <h1>Tic Tac Toe</h1>
             </div>
             <div className="game-board">
-                <Board squares={currentSquares} xIsNext={xIsNext} onPlay={handlePlay}/>
+                <Board squares={currentSquares} xIsNext={xIsNext} onPlay={handlePlay} />
             </div>
             <div className="game-info">
                 <History history={history} currentMove={currentMove} onHistoryClick={jumpTo} />
+            </div>
+            <div className="game-restart">
                 {
                     history.length > 1 && <button onClick={restartHistory}>Restart</button>
                 }
