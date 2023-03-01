@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSort } from '@fortawesome/free-solid-svg-icons'
+import { faSort, faRecycle } from '@fortawesome/free-solid-svg-icons'
 
-export default function History({ history, currentMove, onHistoryClick }) {
+export default function History({ history, currentMove, onHistoryClick, onRestartClick }) {
 
     const getDetailContent = (move) => {
         if (move === currentMove) return (<span className='current'>You are at move #{currentMove}</span>);
@@ -21,6 +21,11 @@ export default function History({ history, currentMove, onHistoryClick }) {
             <ul>
                 {history.map((_, move) => <li key={move}>{getDetailContent(move)}</li>)}
             </ul>
+            <div className="game-restart">
+                {
+                    history.length > 1 && <span onClick={onRestartClick}><FontAwesomeIcon icon={faRecycle} /> Restart</span>
+                }
+            </div>
         </>
     )
 }

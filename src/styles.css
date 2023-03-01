@@ -10,6 +10,34 @@ body {
     color: white;
 }
 
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+li span {
+    display: block;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background: #273541;
+    cursor: default;
+    text-align: center;
+}
+
+li span.current {
+    color: #149eca;
+    box-shadow: inset 12px 12px 12px #23303b, inset -12px -12px 12px #2b3a48;
+}
+
+li span:not(.current):hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 .square {
     background: #343a46;
     border: 1px solid #149eca;
@@ -24,6 +52,10 @@ body {
     text-align: center;
     width: 100px;
     color: white;
+}
+
+.square.winner {
+    color: #149eca;
 }
 
 .board-row:after {
@@ -57,30 +89,15 @@ body {
     color: rgb(107 114 128);
 }
 
-ul {
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    list-style: none;
-    padding: 5px 0;
-}
-
-li span {
-    display: block;
-    padding: 10px 30px;
-    border-radius: 10px;
-    background: #273541;
-    cursor: default;
+.game-restart {
+    padding: 20px;
     text-align: center;
 }
 
-li span.current {
-    color: #149eca;
-    box-shadow: inset 12px 12px 12px #23303b, inset -12px -12px 12px #2b3a48;
-}
-
-li span:not(.current):hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+.game-restart span {
+    border-radius: 20px;
+    background-color: #157191;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
 }

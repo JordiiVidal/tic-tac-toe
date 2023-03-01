@@ -3,25 +3,25 @@ import Square from "./Square"
 // [default] -> that it's the main function in file
 // [JSX] -> return a JSX element
 export default function Board({ squares, xIsNext, onPlay }) {
-  const winner = calculateWinner(squares);
+  let winner = calculateWinner(squares);
   let status = setStatus();
 
   function handleClick(i) {
-    if (squares[i] || winner) return;
+    if (squares[i] || winner.player) return;
     let nextSquares = squares.slice();
     nextSquares[i] = xIsNext ? 'X' : 'O';
     onPlay(nextSquares);
   }
 
   function setStatus() {
-    if (winner) return `Winner : ${winner}`;
+    if (winner.player) return `Winner : ${winner.player}`;
     return `Next player is ${xIsNext ? 'X' : 'O'}`;
   }
 
   const getRowContent = (index) => {
     let row = [];
     for (let i = index; i < index + 3; i++) {
-      row.push(<Square key={i} value={squares[i]} onSquareClick={() => handleClick(i)} />)
+      row.push(<Square key={i} value={squares[i]} isWinner={winner.lines.includes(i)} onSquareClick={() => handleClick(i)} />)
     }
     return row;
   }
@@ -45,12 +45,18 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
+  let winner = {
+    lines : [],
+    player: null
+  }
 
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[b] === squares[a] && squares[c] === squares[a]) {
-      return squares[a]
+      winner.lines = lines[i];
+      winner.player = squares[a];
+      break;
     }
   }
-  return null;
+  return winner;
 }

@@ -1,6 +1,11 @@
-export default function Square({ value, onSquareClick }) {
+import classNames from 'classnames/bind';
+
+export default function Square({ value, isWinner, onSquareClick }) {
     return (
-        <button className="square" onClick={onSquareClick}>
+        <button className={classNames(
+            'square',
+            isWinner && 'winner'
+        )} onClick={onSquareClick}>
             {value}
         </button>
     )

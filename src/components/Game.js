@@ -18,7 +18,7 @@ export default function Game() {
         setCurrentMove(nextMove);
     }
 
-    function restartHistory() {
+    function handleRestart() {
         setHistory([Array(9).fill(null)]);
         setCurrentMove(0);
     }
@@ -32,12 +32,7 @@ export default function Game() {
                 <Board squares={currentSquares} xIsNext={xIsNext} onPlay={handlePlay} />
             </div>
             <div className="game-info">
-                <History history={history} currentMove={currentMove} onHistoryClick={jumpTo} />
-            </div>
-            <div className="game-restart">
-                {
-                    history.length > 1 && <button onClick={restartHistory}>Restart</button>
-                }
+                <History history={history} currentMove={currentMove} onHistoryClick={jumpTo} onRestartClick={handleRestart} />
             </div>
         </div>
     );
