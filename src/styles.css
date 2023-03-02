@@ -101,3 +101,45 @@ li span:not(.current):hover {
     padding: 10px 20px;
     cursor: pointer;
 }
+
+.game-modal {
+    background-color: #374151;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 60px;
+}
+
+.game-modal span {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.game-modal .cards {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.game-modal .cards div {
+    background: #273541;
+    box-shadow: inset 12px 12px 12px #23303b, inset -12px -12px 12px #2b3a48;
+    float: left;
+    font-size: 60px;
+    font-weight: 200;
+    line-height: 100px;
+    height: 100px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 100px;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.game-modal .cards div:hover {
+    background-color: #149eca;
+    box-shadow: none;
+}
