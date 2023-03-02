@@ -4,6 +4,9 @@ import History from "./History";
 import Modal from 'react-modal';
 
 const customStyles = {
+    overlay: {
+        backgroundColor: 'rgba(35, 39, 47, 0.75)'
+      },
     content: {
         top: '50%',
         left: '50%',
@@ -12,7 +15,7 @@ const customStyles = {
         marginRight: '-50%',
         padding: 0,
         borderRadius: '20px',
-        background: '#23272fde',
+        border:'2px solid #149eca',
         transform: 'translate(-50%, -50%)',
     },
 };
