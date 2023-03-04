@@ -25,7 +25,8 @@ export default function Game() {
     const [currentMove, setCurrentMove] = useState(0);
     const currentSquares = history[currentMove];
     const [modalIsOpen, setIsOpen] = useState(true);
-    const xIsNext = currentMove % 2 === 0;
+    const [startPlayer, setStartPlayer] = useState(null);
+    const xIsNext = nextPlayer();
 
     function handlePlay(nextSquares) {
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -47,8 +48,14 @@ export default function Game() {
         setIsOpen(true);
     }
 
-    function closeModal() {
+    function closeModal(player) {
+        setStartPlayer(player);
         setIsOpen(false);
+    }
+
+    function nextPlayer(){
+        if(startPlayer == 'X') return currentMove % 2 === 0;
+        return !(currentMove % 2 === 0);
     }
 
     return (
@@ -70,8 +77,8 @@ export default function Game() {
                 <div className="game-modal">
                     <span>Choose your player:</span>
                     <div className="cards">
-                        <div onClick={closeModal}>X</div>
-                        <div onClick={closeModal}>O</div>
+                        <div onClick={() => closeModal('X')}>X</div>
+                        <div onClick={() => closeModal('O')}>O</div>
                     </div>
                 </div>
             </Modal>
