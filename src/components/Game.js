@@ -55,7 +55,7 @@ export default function Game() {
     }
 
     function nextPlayer() {
-        if (startPlayer == 'X') return currentMove % 2 === 0;
+        if (startPlayer === 'X') return currentMove % 2 === 0;
         return !(currentMove % 2 === 0);
     }
 

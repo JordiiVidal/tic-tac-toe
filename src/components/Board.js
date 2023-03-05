@@ -1,8 +1,16 @@
+import { useGameContext, useStateTest } from "../providers/GameProvider";
+import { useReducer } from "react";
 import Square from "./Square"
 // [export] -> makes this function accessible outside of this file
 // [default] -> that it's the main function in file
 // [JSX] -> return a JSX element
 export default function Board({ squares, xIsNext, onPlay }) {
+
+  const {test} = useGameContext();
+  const reducer = (state, action) => {
+    return state + action;
+  }
+  const [counter, dispatchCounter] = useReducer(reducer, 0);
   let winner = calculateWinner(squares);
   let status = setStatus();
 
@@ -10,6 +18,7 @@ export default function Board({ squares, xIsNext, onPlay }) {
     if (squares[i] || winner.player) return;
     let nextSquares = squares.slice();
     nextSquares[i] = xIsNext ? 'X' : 'O';
+    dispatchCounter(1);
     onPlay(nextSquares);
   }
 
@@ -30,6 +39,7 @@ export default function Board({ squares, xIsNext, onPlay }) {
     <>
       <div className="status">{status}</div>
       {[0, 3, 6].map(row => (<div key={`row${row}`} className="board-row">{getRowContent(row)}</div>))}
+      <div className="status">Total moves today {counter}</div>
     </>
   )
 }
